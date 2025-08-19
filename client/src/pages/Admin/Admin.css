@@ -1,0 +1,364 @@
+.admin-page {
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  background: #f4f6f9;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.admin-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.admin-title {
+  color: #2c3e50;
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.admin-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.tab-button {
+  flex: 1;
+  min-width: 120px;
+  background: none;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #6b7280;
+  transition: all 0.3s ease;
+}
+
+.tab-button.active {
+  background: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+}
+
+.tab-button:hover:not(.active) {
+  background: #f1f5f9;
+  color: #1e40af;
+}
+
+.admin-content {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  color: #1f2937;
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.admin-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.form-input, .form-input select {
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus, .form-input select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.submit-button, .cancel-button, .add-waypoint-button, .remove-waypoint-button, .get-coords-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-button {
+  background: #16a34a;
+  color: #ffffff;
+}
+
+.submit-button:hover {
+  background: #15803d;
+  transform: translateY(-1px);
+}
+
+.submit-button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.cancel-button {
+  background: #dc2626;
+  color: #ffffff;
+  margin-left: 0.5rem;
+}
+
+.cancel-button:hover {
+  background: #b91c1c;
+}
+
+.buses-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.buses-table th, .buses-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.buses-table th {
+  background: #f9fafb;
+  font-weight: 600;
+  color: #374151;
+}
+
+.buses-table tr:hover {
+  background: #f1f5f9;
+}
+
+.action-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-right: 0.5rem;
+}
+
+.edit-button {
+  background: #f59e0b;
+  color: #ffffff;
+}
+
+.edit-button:hover {
+  background: #d97706;
+}
+
+.delete-button {
+  background: #dc2626;
+  color: #ffffff;
+}
+
+.delete-button:hover {
+  background: #b91c1c;
+}
+
+.no-data {
+  text-align: center;
+  color: #6b7280;
+  font-style: italic;
+  padding: 2rem;
+  font-size: 1rem;
+}
+
+
+.waypoint-input-group {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr 80px;
+  gap: 0.75rem;
+  align-items: center;
+  background: #f9fafb;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  position: relative;
+}
+
+.waypoint-input-group input {
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.waypoint-input-group input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.add-waypoint-button {
+  background: rgb(98, 98, 247);
+  color: #ffffff;
+  width: fit-content;
+  grid-column: 1 / -1;
+  margin-top: 0.5rem;
+}
+
+.add-waypoint-button:hover {
+  background: #2535e4;
+}
+
+.remove-waypoint-button {
+  background: #dc2626;
+  color: #ffffff;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.remove-waypoint-button:hover {
+  background: #b91c1c;
+}
+
+.get-coords-button {
+  background: #2563eb;
+  color: #ffffff;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.get-coords-button:hover {
+  background: #1e40af;
+}
+
+
+.suggestions-list {
+  position: absolute;
+  top: calc(100% + 0.25rem);
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  list-style: none;
+  padding: 0.5rem 0;
+  margin: 0;
+  z-index: 1000;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.suggestions-list li {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: #374151;
+  transition: background 0.2s ease;
+}
+
+.suggestions-list li:hover {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.suggestions-list li:last-child {
+  border-bottom: none;
+}
+
+
+@media (max-width: 1024px) {
+  .admin-form {
+    grid-template-columns: 1fr;
+  }
+
+  .waypoint-input-group {
+    grid-template-columns: 1fr;
+  }
+
+  .waypoint-input-group input,
+  .remove-waypoint-button,
+  .get-coords-button {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-tabs {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .tab-button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .admin-title {
+    font-size: 1.75rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .buses-table th, .buses-table td {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-page {
+    padding: 1rem;
+  }
+
+  .admin-content {
+    padding: 1rem;
+  }
+
+  .submit-button, .cancel-button {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .suggestions-list {
+    max-height: 180px;
+  }
+}
