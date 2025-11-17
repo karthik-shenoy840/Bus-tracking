@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -17,14 +15,14 @@ const formatDuration = (minutes) => {
   if (!minutes) return "N/A";
   const hours = Math.floor(minutes / 60);
   const mins = minutes % 60;
-  return `${hours}h ${mins}m`;
+  return `${hours}h ${mins}m;`
 };
 
 const Schedules = () => {
   const [buses, setBuses] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const { showError } = useNotification();
+  const { showSuccess, showError } = useNotification();
 
   const userToken = localStorage.getItem("userToken");
   const adminToken = localStorage.getItem("adminToken");
@@ -62,7 +60,25 @@ const Schedules = () => {
   const handleTrackBus = (data) => {
     navigate(`/track/bus/${data.busId._id}?bookingId=${data._id}`);
   };
-console.log("Buses:", buses);
+
+  const handleDeleteBook = async (id) => {
+    try {
+      const res = await axios.delete(
+        `http://localhost:5000/api/bookings/${id}`
+      );
+
+      if (res.data.message) {
+        showSuccess("Success", res.data.message);
+      } else {
+        showError("Error", "Error deleteing booking");
+      }
+      await fetchBuses();
+    } catch (error) {
+      console.error("Error deleteing booking:", error);
+      showError("Error", "Error deleteing booking");
+    }
+  };
+
   return (
     <div className="schedules-page">
       <div className="container">
@@ -142,7 +158,7 @@ console.log("Buses:", buses);
                       <div className="detail-item">
                         <div className="detail-label">Passengers</div>
                         <div className="detail-value">
-                          { (Math.random() * (50 - 10) + 10).toFixed(0)}/  50
+                          {(Math.random() * (50 - 10) + 10).toFixed(0)}/ 50
                         </div>
                       </div>
                       <div className="detail-item">
@@ -165,6 +181,12 @@ console.log("Buses:", buses);
                         onClick={() => handleTrackBus(schedule)}
                       >
                         📍 Track Live
+                      </button>
+                      <button
+                        className="action-button delete-button"
+                        onClick={() => handleDeleteBook(schedule._id)}
+                      >
+                        🗑 Delete
                       </button>
                     </div>
                   </div>

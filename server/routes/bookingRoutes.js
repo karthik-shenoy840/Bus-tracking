@@ -53,7 +53,7 @@ router.post("/", protectUserRoute, async (req, res) => {
           message: "All required fields are missing or user not authenticated.",
         });
     }
-
+// ena
     const booking = new Booking({
       userName,
       contact,
@@ -135,6 +135,19 @@ router.get("/:id", async (req, res) => {
     res
       .status(500)
       .json({ message: "Internal server error", error: error.message });
+  }
+});
+
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const schedule = await Booking.findByIdAndDelete(req.params.id);
+    if (!schedule) {
+      return res.status(404).json({ message: "Schedule not found" });
+    }
+    res.json({ message: "Booking deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Error deleting schedule", error });
   }
 });
 
